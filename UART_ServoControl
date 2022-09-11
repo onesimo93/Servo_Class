@@ -1,0 +1,26 @@
+#include <Servo.h>
+
+Servo myservo;  // create servo object to control a servo
+
+
+int state ;
+
+void setup() {
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+    Serial.begin(9600);
+  delay(100);
+
+}
+
+void loop() {
+  if (Serial.available()){
+
+ state = Serial.parseInt();
+ if (182 >state > 0)
+ {
+  state = state - 1;
+  Serial.println(state);  
+  myservo.write(state);
+ }
+}
+}
